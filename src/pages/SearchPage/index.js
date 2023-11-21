@@ -55,6 +55,7 @@ const SearchPage = () => {
               </div>
             );
           } else {
+            // 이미지가 없는 경우, 검색 결과가 사람인 경우 표시하지 않음
             return null;
           }
         })}
