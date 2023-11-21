@@ -118,11 +118,12 @@ const DropDown = styled.div`
   right: 0px;
   background: rgb(19, 19, 19);
   border: 1px solid rgba(151, 151, 151, 0.34);
-  border-radius: 4px;
+  border-radius:  4px;
   box-shadow: rgb(0 0 0 /50%) 0px 0px 18px 0px;
   padding: 10px;
   font-size: 14px;
   letter-spacing: 3px;
+  width: 100%;
   opacity: 0;
 `;
 
@@ -149,8 +150,9 @@ const UserImg = styled.img`
   height: 100%;
 `;
 
+
 const Login = styled.a`
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0,0,0,0.6);
   padding: 8px 16px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -163,14 +165,16 @@ const Login = styled.a`
     border-color: transparent;
   }
 `;
+
 const Input = styled.input`
-  position: fixed;
-  left: 50%;
-  transform: translate(-50%, 0);
-  background-color: rgba(0, 0, 0, 0.582);
-  border-radius: 5px;
-  padding: 5px;
-  border: none;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: rgba(0,0,0, 0.582);
+    border-radius: 5px;
+    color: white; 
+    padding: 5px;
+    border: none;
 `;
 
 const NavWrapper = styled.nav`
@@ -179,7 +183,7 @@ const NavWrapper = styled.nav`
   left: 0;
   right: 0;
   height: 70px;
-  background-color: ${(props) => (props.show ? "#090b13" : "transparent")};
+  background-color: ${props => props.show ? "#090b13" : "transparent"};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -189,7 +193,7 @@ const NavWrapper = styled.nav`
 `;
 
 const Logo = styled.a`
-  padding: 0;
+  padding:0;
   width: 80px;
   margin-top: 4px;
   max-height: 70px;
@@ -200,4 +204,4 @@ const Logo = styled.a`
     display: block;
     width: 100%;
   }
-`;
+`

@@ -14,7 +14,7 @@ const SearchPage = () => {
   let query = useQuery();
 
   const searchTerm = query.get("q");
-  const debounceSearchTerm = useDebounce(searchTerm, 500)
+  const debounceSearchTerm = useDebounce(searchTerm, 500);
   const navigate = useNavigate();
   useEffect(() => {
     if (debounceSearchTerm) {
@@ -40,11 +40,10 @@ const SearchPage = () => {
           if (movie.backdrop_path !== null && movie.media_type !== "person") {
             const movieImageUrl =
               "https://image.tmdb.org/t/p/w500" + movie.backdrop_path;
-
             return (
               <div className="movie" key={movie.id}>
                 <div
-                  className="movie__cloumn-poster"
+                  className="movie__column-poster"
                   onClick={() => navigate(`/${movie.id}`)}
                 >
                   <img
@@ -55,6 +54,8 @@ const SearchPage = () => {
                 </div>
               </div>
             );
+          } else {
+            return null;
           }
         })}
       </section>
@@ -63,7 +64,7 @@ const SearchPage = () => {
     return (
       <section className="no-results">
         <div className="no-results__text">
-          <p>찾고자하는 검색어 "{searchTerm}"에 맞는 영화가 없습니다.</p>
+          <p>찾고자하는 검색어 "{searchTerm}" 에 맞는 영화가 없습니다.</p>
         </div>
       </section>
     );
