@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# Disney Plus App
+Disney Plus 서비스를 모방하여 생성한 프로젝트입니다. Firebase를 이용하여 구글 인증을 통한 로그인 기능을 제공하고 The movie DB API를 활용해서 영화 데이터를 받아옵니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## 기능 
+구글 계정을 통한 소셜 로그인 기능을 제공합니다.
+트랜디한 영화 20개 중에 임의의 영화를 선택해 베너에서 표시해 줍니다.
+예고편이 등록되어 있는 경우 재생 버튼이 활성화 되며 예고편을 재생할 수 있습니다.
 
-### `yarn start`
+API로 받아온 영화 데이터를 장르로 구분하여 표시합니다. 또한 실시간 키워드 검색을 제공합니다.
+키워드로 영화를 검색할 수 있습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `yarn test`
+## styled-components
+간단한 스타일을 컴포넌트화 하여 적용할 수 있습니다. 
+JSX 구조를 단순화하기 위해 사용했습니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## React-router-dom
+로그인 페이지와 검색 페이지 메인페이지 등을 나누고 라우팅하기 위해 사용했습니다.
+Outlet 기능을 이용해 레이아웃을 구성하는데 활용하였습니다.
 
-### `yarn build`
+## swiper
+영화 리스트를 표시하는 용도로 활용했습니다. 
+네비게이션 기능을 통해 스크롤하거나 드래그 하여 넘길 수 있는 기능을 손쉽게 구현할 수 있어 사용했습니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## axios
+fetch 코드의 가독성을 향상하고 인스턴스를 생성하여 편리하게 API와 통신하기 위해 사용했습니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## firebase 
+백엔드서버를 직접 구축하지 않고도 소셜 인증을 사용하고 서비스를 배포하기 위해 사용했습니다.
