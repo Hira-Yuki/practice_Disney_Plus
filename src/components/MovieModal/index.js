@@ -25,7 +25,7 @@ const MovieModal = ({
           </span>
           <img
             className="modal__poster-img"
-            src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+            src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
             alt="modal-img"
           />
           <div className="modal__content">
