@@ -111,12 +111,14 @@
   top: 0;
   margin-top: 20px;
   font-size: 1.2rem;
-  border: 1px solid gray;
-  border-radius: 50%;
-  background-color: transparent;
   color: white;
   z-index: 4;
   cursor: pointer;
+
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid rgba(151, 151, 151, 0.34);
+  box-shadow: rgb(0 0 0 /50%) 0px 0px 18px 0px;
 }
 
 .element {

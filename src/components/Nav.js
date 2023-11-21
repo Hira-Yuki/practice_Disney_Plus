@@ -10,8 +10,12 @@ import {
 } from "firebase/auth";
 
 const Nav = () => {
+  const initialUserData = localStorage.getItem("userData")
+    ? JSON.parse(localStorage.getItem("userData"))
+    : {};
+
   const [show, setShow] = useState(false);
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState(initialUserData);
   const { pathname } = useLocation();
   const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
@@ -56,6 +60,7 @@ const Nav = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         setUserData(result.user);
+        localStorage.setItem("userData", JSON.stringify(result.user));
       })
       .catch((error) => {
         console.log(error);
