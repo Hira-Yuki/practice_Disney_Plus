@@ -39,13 +39,6 @@
 }
 
 .arrow {
-    /* 투명한 버튼의 글자 영역을 클릭해야만 동작할 수 있었기에 시각적으로 보여지는 어두운 영역이 모두 버튼으로 덮이도록 수정 */
-    width: 100%;
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-
     transition: 400ms all ease-in-out;
 }
 
