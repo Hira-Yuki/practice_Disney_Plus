@@ -8,19 +8,21 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser, removeUser } from "../store/userSlice";
 
 const Nav = () => {
-  const initialUserData = localStorage.getItem("userData")
-    ? JSON.parse(localStorage.getItem("userData"))
-    : {};
-
   const [show, setShow] = useState(false);
-  const [userData, setUserData] = useState(initialUserData);
+  // const [userData, setUserData] = useState(initialUserData);
   const { pathname } = useLocation();
   const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
+
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.user);
 
   // 로그인 상태를 검사하여 페이지 이동
   useEffect(() => {
@@ -59,7 +61,15 @@ const Nav = () => {
   const handleAuth = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        setUserData(result.user);
+        // setUserData(result.user);
+        dispatch(
+          setUser({
+            id: result.user.uid,
+            email: result.user.email,
+            displayName: result.user.displayName,
+            photoURL: result.user.photoURL,
+          })
+        );
         localStorage.setItem("userData", JSON.stringify(result.user));
       })
       .catch((error) => {
@@ -70,7 +80,7 @@ const Nav = () => {
   const handleSiginOut = () => {
     signOut(auth)
       .then(() => {
-        setUserData({});
+        dispatch(removeUser())
         navigate("/");
       })
       .catch((error) => {
@@ -99,7 +109,7 @@ const Nav = () => {
             placeholder="영화를 검색해보세요."
           />
           <SignOut>
-            <UserImg src={userData.photoURL} alt={userData.displayName} />
+            <UserImg src={user.photoURL} alt={user.displayName} />
             <DropDown>
               <span onClick={handleSiginOut}>Sigin Out</span>
             </DropDown>
@@ -118,7 +128,7 @@ const DropDown = styled.div`
   right: 0px;
   background: rgb(19, 19, 19);
   border: 1px solid rgba(151, 151, 151, 0.34);
-  border-radius:  4px;
+  border-radius: 4px;
   box-shadow: rgb(0 0 0 /50%) 0px 0px 18px 0px;
   padding: 10px;
   font-size: 14px;
@@ -150,9 +160,8 @@ const UserImg = styled.img`
   height: 100%;
 `;
 
-
 const Login = styled.a`
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 8px 16px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -167,14 +176,14 @@ const Login = styled.a`
 `;
 
 const Input = styled.input`
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%, 0);
-    background-color: rgba(0,0,0, 0.582);
-    border-radius: 5px;
-    color: white; 
-    padding: 5px;
-    border: none;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: rgba(0, 0, 0, 0.582);
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+  border: none;
 `;
 
 const NavWrapper = styled.nav`
@@ -183,7 +192,7 @@ const NavWrapper = styled.nav`
   left: 0;
   right: 0;
   height: 70px;
-  background-color: ${props => props.show ? "#090b13" : "transparent"};
+  background-color: ${(props) => (props.show ? "#090b13" : "transparent")};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -193,7 +202,7 @@ const NavWrapper = styled.nav`
 `;
 
 const Logo = styled.a`
-  padding:0;
+  padding: 0;
   width: 80px;
   margin-top: 4px;
   max-height: 70px;
@@ -204,4 +213,4 @@ const Logo = styled.a`
     display: block;
     width: 100%;
   }
-`
+`;
